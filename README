@@ -1,0 +1,70 @@
+数据类型及相互转化方法
+Transformation among Data Types
+
+
+Pandas、Numpy、Python各自支持的数据类型
+
+pandas dtype:
+object, int 64, float64, bool, datetime64, timedelta[ns]
+
+python type:
+str, int, float, bool
+
+numpy type:
+string_, unicode_, int, float, bool
+
+------------------------------------------------
+
+
+使用:
+object\str\string\unicode   -->   text
+int   -->    integer numbers
+float   -->  floating point numbers
+bool    -->  True/False value
+datetime64    --> date & time values
+timedelta     --> difference between two dates
+
+------------------------------------------------
+
+
+
+Pandas中进行数据类型转换有三种基本方法：
+使用astype()函数进行强制类型转换
+  data['客户编号'] = data['客户编号'].astype('object') #对原始数据进行转换并覆盖原始数据列
+  ！！当待转换列中含有不能转换的特殊值时(例子中￥,ErrorValue等)astype()函数将失效。
+
+自定义函数进行数据类型转换
+例子1
+def convert_currency(value):
+  new_value = value.replace(',','').replace('$','')
+  return np.float(new_value)
+  
+data['2016'].apply(conver_currency)
+
+或者
+data['2016'].apply(lambda x: x.replace('$','').replace(',','').astype('float')
+
+
+例子2
+def convert_percent(value):
+  new_value=value.replace('%','')
+  return float(new_value)/100
+
+data['增长率'].apply(convert_percent)
+data['增长率'].apply(lambda x: x.replace('%', '')).astype('float') / 100）
+
+
+data['状态'] = np.where(data['状态'] == 'Y', True, False)
+
+使用Pandas提供的函数如to_numeric()、to_datetime()
+
+
+
+------------------------------------------------
+
+
+
+#数据中含有中文数据
+data = pd.read_csv('data.csv', encoding='gbk') 
+
+
