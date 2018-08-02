@@ -26,6 +26,10 @@ timedelta     --> difference between two dates
 
 ------------------------------------------------
 
+#数据中含有中文数据
+data = pd.read_csv('data.csv', encoding='gbk') 
+
+
 
 
 Pandas中进行数据类型转换有三种基本方法：
@@ -53,18 +57,35 @@ def convert_percent(value):
 data['增长率'].apply(convert_percent)
 data['增长率'].apply(lambda x: x.replace('%', '')).astype('float') / 100）
 
+例子3
+data['状态']=np.where(data['状态']=='Y',True, False)
 
-data['状态'] = np.where(data['状态'] == 'Y', True, False)
 
 使用Pandas提供的函数如to_numeric()、to_datetime()
 
+非数值被替换成0.0
+data['所属值']=pd.to_numeric(data['所属值'],errors='coerce').fillna(0)
+
+把单独的year、month、day三列合并成一个单独的时间戳。
+data['new_data']=pd.to_datetime(data[['day', 'month', 'year']])
+
+
+
+在读取数据时就对数据类型进行转换:
+data2 = pd.read_csv("data.csv",
+   converters={
+    '客户编号': str,
+    '2016': convert_currency,
+    '2017': convert_currency,
+    '增长率': convert_percent,
+    '所属组': lambda x: pd.to_numeric(x, errors='coerce'),
+    '状态': lambda x: np.where(x == "Y", True, False)
+    },
+   encoding='gbk')
+   
 
 
 ------------------------------------------------
 
-
-
-#数据中含有中文数据
-data = pd.read_csv('data.csv', encoding='gbk') 
 
 
