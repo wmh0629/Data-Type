@@ -1,0 +1,148 @@
+Python3 中有六个标准的数据类型：
+
+Number（数字）
+String（字符串）
+List（列表）
+Tuple（元组）
+Set（集合）
+Dictionary（字典）
+Python3 的六个标准数据类型中：
+
+不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
+可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）
+
+
+-----------------------------------------------
+Number（数字）：
+Python3 支持 int、float、bool、complex（复数）
+
+a, b, c, d = 20, 5.5, True, 4+3j
+print(type(a), type(b), type(c), type(d))
+<class 'int'> <class 'float'> <class 'bool'> <class 'complex'>
+
+
+可以用 isinstance 来判断：
+a = 111
+isinstance(a, int)
+
+
+!isinstance 和 type 的区别在于：
+type()不会认为子类是一种父类类型。
+isinstance()会认为子类是一种父类类型。
+
+
+注意：在 Python2 中是没有布尔型的，它用数字 0 表示 False，用 1 表示 True。到 Python3 中，把 True 和 False 定义成关键字了，但它们的值还是 1 和 0，它们可以和数字相加。
+
+
+
+python数值运算：
+1、Python可以同时为多个变量赋值，如a, b = 1, 2。
+2、一个变量可以通过赋值指向不同类型的对象。
+3、数值的除法包含两个运算符：/ 返回一个浮点数，// 返回一个整数。
+4、在混合计算时，Python会把整型转换成为浮点数。
+
+Python还支持复数，复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型
+
+
+
+String（字符串）
+str = 'Runoob'
+print (str)          # 输出字符串
+print (str[0:-1])    # 输出第一个到倒数第二个的所有字符
+print (str[0])       # 输出字符串第一个字符
+print (str[2:5])     # 输出从第三个开始到第五个的字符
+print (str[2:])      # 输出从第三个开始的后的所有字符
+print (str * 2)      # 输出字符串两次
+print (str + "TEST") # 连接字符串
+
+
+Python 使用反斜杠(\)转义特殊字符，如果你不想让反斜杠发生转义，可以在字符串前面添加一个 r，表示原始字符串：
+>>> print('Ru\noob')
+Ru
+oob
+>>> print(r'Ru\noob')
+Ru\noob
+>>> 
+
+
+
+另外，反斜杠(\)可以作为续行符，表示下一行是上一行的延续。也可以使用 """...""" 或者 '''...''' 跨越多行。
+注意，Python 没有单独的字符类型，一个字符就是长度为1的字符串。
+
+>>>word = 'Python'
+>>> print(word[0], word[5])
+P n
+>>> print(word[-1], word[-6])
+n P
+与 C 字符串不同的是，Python 字符串不能被改变。向一个索引位置赋值，比如word[0] = 'm'会导致错误。
+
+注意：
+1、反斜杠可以用来转义，使用r可以让反斜杠不发生转义。
+2、字符串可以用+运算符连接在一起，用*运算符重复。
+3、Python中的字符串有两种索引方式，从左往右以0开始，从右往左以-1开始。
+4、Python中的字符串不能改变。
+
+
+
+Python数据类型转换
+
+int(x, base=10)
+base -- 进制数，默认十进制。
+
+float(x)
+
+complex([real[,imag]])
+complex(1, 2)
+(1 + 2j)
+
+str(x)
+
+object返回string对象
+repr(x)
+
+将序列 s 转换为一个元组
+tuple(s)
+
+list(s)
+
+set(s)
+dict(key, value)
+
+frozonset(s)
+
+将一个整数转换为一个字符
+chr(x)
+
+将一个字符转换为它的整数值
+ord(x)
+
+转换为一个十六进制字符串
+hex(x)
+
+转换为一个八进制字符串
+oct(x)
+
+
+
+参数
+expression -- 表达式。
+globals -- 变量作用域，全局命名空间，如果被提供，则必须是一个字典对象。
+locals -- 变量作用域，局部命名空间，如果被提供，可以是任何映射对象。
+
+eval(expression[, globals[, locals]]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
